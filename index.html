@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- bootstrap js cdn -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <!-- fontawesome font css cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- my css -->
+    <link rel="stylesheet" href="./index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">GAME OF LIFE</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#1">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#2">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#3">PLAY GAME</a>
+            </li>
+          </ul>
+        </div>
+      </nav> -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Game Of Life</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#1">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#2">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#3">Play The Game</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container-fluid">
+      <div class="background1" id="1">
+        <!-- <img
+          src="https://i.pinimg.com/originals/78/f4/89/78f489f9d33e926ba0c130a15532f8a1.gif"
+          width="100%"
+          height="100%"
+        /> -->
+        <div class="hello">
+          <h1 class="welcome">WELCOME TO MY WEBSITE</h1>
+          <p class="intro">Hi, I'm Chinny. I'm Studying in Tecky Academy.</p>
+        </div>
+      </div>
+
+      <div class="background2" id="2">
+        <h1 class="rules">RULES</h1>
+        <dl class="s1">
+          <dd>
+            If a box has life and it has less than 2 neighbors. It dies of loneliness. The box becomes lifeless next
+            generation.
+          </dd>
+
+          <dd>
+            If a box has life and it has more than 3 neighbors. It dies of overpopulation. The box becomes lifeless next
+            generation.
+          </dd>
+
+          <dd>If a box has life and it has 2 to 3 neighbors. Nothing changes for this box.</dd>
+
+          <dd>
+            If a box has no life and it has 3 neighbors, the box in next generation fills with life because of
+            reproduction.
+          </dd>
+        </dl>
+      </div>
+
+      <div class="background3" id="3">
+        <a href="./gameoflife.html"
+          ><button class="gameButton"><span>ENTER THE GAME</span></button></a
+        >
+      </div>
+
+      <div onclick="topFunction()" id="myBtn" title="Go to top">
+        <i class="fa-sharp fa-solid fa-chevron-up"></i>
+      </div>
+    </div>
+    <footer>
+      <div class="footer">
+        <div class="contain">
+          <div class="col">
+            <h2>Image Created By</h2>
+            <ul>
+              <li>OMOCAT</li>
+              <li>1041uuu</li>
+              <li>studio ghibli</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h2>Products</h2>
+            <ul>
+              <li>SEO</li>
+              <li>Content Development</li>
+              <li>Digital Marketing</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h2>Team</h2>
+            <ul>
+              <li>HR Team</li>
+              <li>Finance Team</li>
+              <li>Content Team</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h2>Resources</h2>
+            <ul>
+              <li>Webmail</li>
+              <li>Web templates</li>
+              <li>Email templates</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h2>Contact</h2>
+            <ul>
+              <li>+91 9051 XXXXXX</li>
+              <li>033 2464 XXXX</li>
+              <li>abc@gmail.com</li>
+            </ul>
+          </div>
+          <div class="col address">
+            <h2>Address</h2>
+            <ul>
+              <li>Sky Towers, Service Road, Kolkata</li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- my js -->
+    <script src="./index.js"></script>
+  </body>
+</html>
