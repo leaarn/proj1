@@ -35,7 +35,6 @@ header {
   justify-content: flex-start;
   align-items: center;
   flex: 1;
-  /* height: 60vw; */
   background-color: darkgoldenrod;
   border: solid 5px darkgoldenrod;
   border-radius: 20px;
@@ -66,11 +65,6 @@ header {
   transition: 0.5s;
 }
 
-/* dark mode 
-.dark-mode {
-  background-color: grey;
-}*/
-
 @media screen and (max-width: 1200px) {
   [class*="col-"] {
     width: 100%;
@@ -82,16 +76,11 @@ header {
     align-items: center;
   }
 
-  /* .canvas-container {
-    flex-grow: 8;
-  } */
   .function-bar {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    /* height: 30%; */
     width: 90%;
-    /* flex-grow: 4; */
   }
   #reset-game {
     height: 7%;

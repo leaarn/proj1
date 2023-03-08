@@ -12,17 +12,11 @@ let colorPicker;
 let lonelinessSelect;
 let overpopulationSelect;
 let reproductionSelect;
-// let selectPattern;
-// let pattern = [{ Glider: [0, 1, 0][(0, 0, 1)][(1, 1, 1)] }];
 let stop_flag = false;
 let divWidth, divHeight;
 //change dark mode
 let mode;
 let modeFlag = false;
-// //get date
-// const getTime = Date.today();
-// const time = document.querySelector(".time");
-// time.innerHTML = getTime;
 
 function setup() {
   /* Set the canvas to be under the element #canvas*/
@@ -30,10 +24,6 @@ function setup() {
   pauseButton = createButton("STOP");
   pauseButton.mousePressed(buttonToStart);
   pauseButton.parent(document.querySelector(".pauseButton"));
-  //restart button
-  //   restart = createButton("RESTART GAME");
-  //   restart.mousePressed(init);
-  //   restart.parent(select("#reset-game"));
   //random button
   randomButton = createButton("RANDOM");
   randomButton.mousePressed(startRandom);
@@ -69,17 +59,6 @@ function setup() {
     reproductionSelect.selected("3");
   }
 
-  // Patten Selector
-  // selectPattern = createSelect();
-  // selectPattern.parent(select(".pattenSelector"));
-  // for (p of pattern) {
-  //   if (p instanceof Object) {
-  //     for (chosePattern in p) {
-  //       selectPattern.option(chosePattern);
-  //     }
-  //   }
-  // }
-
   //canvas!
   redrawCanvas();
   // Now both currentBoard and nextBoard are array of array of undefined values.
@@ -88,10 +67,8 @@ function setup() {
 
 function redrawCanvas() {
   var mainDiv = select("#canvas");
-  console.log("check select ", mainDiv);
   divWidth = mainDiv.width;
   divHeight = mainDiv.height;
-  console.log("check canvas div width height", divWidth, divHeight);
   const canvas = createCanvas(divWidth, divHeight);
   canvas.parent(select("#canvas"));
 
@@ -131,7 +108,6 @@ function draw() {
   generate();
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
-      //c[]=p[]
       if (currentBoard[i][j] == 1) {
         fill(boxColor);
       } else {
@@ -161,9 +137,7 @@ function generate() {
           neighbors += currentBoard[(x + i + columns) % columns][(y + j + rows) % rows];
         }
       }
-      //   let loneliness = 2;
-      //   let overpopulation = 3;
-      //   let reproduction = 3;
+
       lValue = int(lonelinessSelect.value());
       oValue = int(overpopulationSelect.value());
       rValue = int(reproductionSelect.value());
@@ -204,9 +178,10 @@ function mouseDragged() {
   /**
    * If the mouse coordinate is outside the board
    */
-  if (mouseX > unitLength * columns || mouseY > unitLength * rows) {
+  if (mouseX > unitLength * columns || mouseY > unitLength * rows || mouseX < 0) {
     return;
   }
+  console.log(mouseY);
   const x = Math.floor(mouseX / unitLength);
   const y = Math.floor(mouseY / unitLength);
   currentBoard[x][y] = 1;
@@ -233,9 +208,7 @@ function mouseReleased() {
 }
 
 function buttonToStart() {
-  console.log("check hihi", stop_flag);
   if (stop_flag == false) {
-    console.log("check stop");
     noLoop();
     stop_flag = true;
     pauseButton.html("START");
@@ -258,7 +231,6 @@ function startRandom() {
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
       let ranResult = random();
-      //   console.log("check ranResult", ranResult);
       if (ranResult > 0.5) {
         currentBoard[i][j] = 1;
         loop();
@@ -276,94 +248,76 @@ function windowResized() {
   noLoop();
   saveBoard = currentBoard;
   oldRow = saveBoard.length;
-  redrawCanvas();
+  var mainDiv = select("#canvas");
+  divWidth = mainDiv.width;
+  divHeight = mainDiv.height;
+  const canvas = createCanvas(divWidth, divHeight);
+  canvas.parent(select("#canvas"));
+
+  /*Calculate the number of columns and rows */
+  columns = floor(width / unitLength + 1);
+  rows = floor(height / unitLength + 1);
   newRow = currentBoard.length;
-  console.log("old: " + oldRow);
-  console.log("new: " + newRow);
   /* check increase rows or decrease rows */
   if (newRow < oldRow) {
-    console.log("decrease rows");
     for (iRow = 0; iRow < newRow; iRow++) {
       //if there are more elem
       if (currentBoard[iRow].length > saveBoard[iRow].length) {
         //add the elem into saveBoard
-        console.log("add columns");
         for (x = 0; x < currentBoard[iRow].length - saveBoard[iRow].length; x++) {
           saveBoard[iRow].push(x);
         }
       } else if (currentBoard[iRow].length < saveBoard[iRow].length) {
-        console.log("delete columns");
         for (x = 0; x < saveBoard[iRow].length - currentBoard[iRow].length; x++) {
           saveBoard[iRow].pop(x);
         }
       }
     }
-    console.log("delete rows");
     for (iRow = newRow; iRow < oldRow; iRow++) {
       saveBoard.splice(iRow, 1);
     }
   } else if (newRow > oldRow) {
-    console.log("increase rows");
     for (iRow = 0; iRow < oldRow; iRow++) {
       //if there are more elem
       if (currentBoard[iRow].length > saveBoard[iRow].length) {
         //add the elem into saveBoard
-        // console.log("hi");
         for (x = 0; x < currentBoard[iRow].length - saveBoard[iRow].length; x++) {
           saveBoard[iRow].push(x);
-        }
-      } else if (currentBoard[iRow].length < saveBoard[iRow].length) {
-        // console.log("hiu", currentBoard[i].length);
-        for (x = 0; x < saveBoard[iRow].length - currentBoard[iRow].length; x++) {
-          saveBoard[iRow].pop(x);
         }
       }
     }
     /* add row */
-    console.log("add rows");
     for (iRow = oldRow; iRow < newRow; iRow++) {
       saveBoard.splice(iRow, 0, currentBoard[iRow]);
     }
   } else if ((newRow = oldRow)) {
-    console.log("Same rows");
-    for (iRow = 0; iRow < oldRow; iRow++) {
-      //if there are more elem
-      if (currentBoard[iRow].length > saveBoard[iRow].length) {
-        //add the elem into saveBoard
-        // console.log("hi");
-        for (x = 0; x < currentBoard[iRow].length - saveBoard[iRow].length; x++) {
-          saveBoard[iRow].push(x);
-        }
-      } else if (currentBoard[iRow].length < saveBoard[iRow].length) {
-        // console.log("hiu", currentBoard[i].length);
-        for (x = 0; x < saveBoard[iRow].length - currentBoard[iRow].length; x++) {
-          saveBoard[iRow].pop(x);
-        }
-      }
-    }
+    saveBoard = currentBoard;
   }
   currentBoard = saveBoard;
-  loop();
-  // init();
+  for (let i = 0; i < columns; i++) {
+    for (let j = 0; j < rows; j++) {
+      if (currentBoard[i][j] == 1) {
+        fill(boxColor);
+      } else {
+        if (modeFlag == true) {
+          fill(80);
+        } else fill(255);
+      }
+      stroke(strokeColor);
+      rect(i * unitLength, j * unitLength, unitLength, unitLength);
+    }
+  }
+  pauseButton.html("START");
+  stop_flag = true;
 }
-// for (let x = 0; x < columns; x++) {
-//   for (let y = 0; y < rows; y++) {
 
 //dark mode button
 function noLifeCol() {
   if (modeFlag == false) {
     modeFlag = true;
     loop();
-    console.log("mode change", modeFlag);
   } else if (modeFlag == true) {
     modeFlag = false;
-    console.log("mode false", modeFlag);
     loop();
   }
 }
-
-//div dark mode
-// function darkMDiv() {
-//   let dDiv = document.querySelector(".p5Canvas");
-//   dDiv.classList.toggle(".dark-mode");
-// }

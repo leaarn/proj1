@@ -2,14 +2,6 @@ body {
   background-color: rgb(137, 136, 136);
 }
 
-/* .background1 {
-  position: relative;
-  margin-top: 5%;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 80%;
-  z-index: -1;
-} */
 header {
   top: 1px;
   position: sticky;
@@ -46,7 +38,6 @@ header {
   border: 3px solid aliceblue;
 }
 
-
 .intro {
   text-align: center;
   color: aliceblue;
@@ -71,14 +62,6 @@ header {
 .intro:hover {
   background-position-x: 0%;
 }
-
-/* .background2 {
-  position: relative;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 80%;
-  z-index: -1;
-} */
 
 .background2 {
   position: relative;
@@ -135,17 +118,6 @@ header {
   }
 }
 
-/* .s2 {
-  position: absolute;
-  top: 14%;
-  right: 5%;
-  width: 30%;
-  padding: 5px;
-  font-size: 10px;
-  background-color: rgba(99, 102, 105, 0.47);
-  color: aliceblue;
-} */
-
 .img1 {
   width: 5px;
   height: 5px;
@@ -163,13 +135,6 @@ header {
   justify-content: center;
   align-items: center;
 }
-
-/* .enterGame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-} */
 
 .gameButton {
   cursor: url("./cat1_trans.png"), auto;
